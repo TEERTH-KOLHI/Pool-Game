@@ -125,5 +125,15 @@ Game_Singleton.prototype.mainLoop = function () {
     }
 };
 
+Game_Singleton.prototype.setTableCloth = function (theme) {
+    if (theme === 'blue' && sprites.backgroundBlue) {
+        sprites.background = sprites.backgroundBlue;
+    } else if (theme === 'red' && sprites.backgroundRed) {
+        sprites.background = sprites.backgroundRed;
+    } else if (theme === 'green' && sprites.backgroundGreen) {
+        sprites.background = sprites.backgroundGreen;
+    }
+};
+
 var Game = new Game_Singleton();
 
