@@ -5,12 +5,27 @@ function generateMainMenuLabels(headerText){
 
         new Label(
             headerText, 
-            new Vector2(100,0),
+            new Vector2(100, 30),
             Vector2.zero,
-            "white",
+            "#FFFFFF",
             "left",
-            "Bookman",
-            "100px"
+            "'Outfit', sans-serif",
+            "92px",
+            "800",
+            "rgba(0, 0, 0, 0.85)",
+            16
+        ),
+        new Label(
+            "👑 PRO CHAMPIONSHIP EDITION", 
+            new Vector2(1150, 760),
+            Vector2.zero,
+            "#FBBF24",
+            "left",
+            "'Outfit', sans-serif",
+            "18px",
+            "700",
+            "rgba(0, 0, 0, 0.9)",
+            10
         )
     ];
 

@@ -43,7 +43,7 @@ GamePolicy.prototype.reset = function(){
     this.validBallsInsertedOnTurn = 0;
 }
 GamePolicy.prototype.drawScores = function(){
-    Canvas2D.drawText("PLAYER " + (this.turn+1), new Vector2(Game.size.x/2 + 40,200), new Vector2(150,0), "#096834", "top", "Impact", "70px");
+    Canvas2D.drawText("PLAYER " + (this.turn+1), new Vector2(Game.size.x/2 + 40,200), new Vector2(150,0), "#FBBF24", "top", "'Outfit', sans-serif", "64px", "800", "rgba(0, 0, 0, 0.9)", 14);
     this.players[0].totalScore.draw();
     this.players[1].totalScore.draw();
 

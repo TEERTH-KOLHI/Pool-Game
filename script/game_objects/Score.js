@@ -17,10 +17,13 @@ Score.prototype.draw = function () {
       this.value, 
       this.position, 
       this.origin, 
-      "#096834", 
+      "rgba(255, 255, 255, 0.22)", 
       "top", 
-      "Impact", 
-      "200px"
+      "'Outfit', sans-serif", 
+      "180px",
+      "800",
+      "rgba(0, 0, 0, 0.5)",
+      8
     );
 };
 
