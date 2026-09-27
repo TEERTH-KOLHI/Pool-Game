@@ -18,15 +18,21 @@ Menu.prototype.init = function
 }
 
 Menu.prototype.load = function(){
-    this.sound.currentTime = 0;
     this.active = true;
-
     requestAnimationFrame(this.menuLoop.bind(this));
-    if(SOUND_ON){
-        this.sound.volume = 0.8;
-    }
 
-    this.sound.play();
+    if(this.sound){
+        try {
+            this.sound.currentTime = 0;
+            if(SOUND_ON){
+                this.sound.volume = 0.8;
+            }
+            var p = this.sound.play();
+            if(p && typeof p.catch === 'function'){
+                p.catch(function () {});
+            }
+        } catch(e) {}
+    }
 }
 
 Menu.prototype.draw = function(){

@@ -1,11 +1,242 @@
-html, body {
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cinzel:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
-/*#screen{
-	padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 35%, #0e1e38 0%, #081224 55%, #02050c 100%);
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #e2e8f0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Floating Top HUD Bar */
+.luxury-hud-bar {
+    position: fixed;
+    top: 14px;
+    left: 20px;
+    right: 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    pointer-events: none;
+}
+
+.luxury-hud-bar > * {
+    pointer-events: auto;
+}
+
+/* Brand Section */
+.hud-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hud-ball-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    animation: gentle-float 3s ease-in-out infinite;
+}
+
+.hud-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hud-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    background: rgba(59, 130, 246, 0.18);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #60a5fa;
+    text-transform: uppercase;
+}
+
+/* Center HUD Section */
+.hud-center {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.owner-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.05) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    box-shadow: 0 2px 12px rgba(245, 158, 11, 0.15);
+    font-size: 13px;
+    font-weight: 600;
+    color: #cbd5e1;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.owner-pill:hover {
+    transform: translateY(-1px);
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.28);
+}
+
+.crown-icon {
+    font-size: 16px;
+    filter: drop-shadow(0 1px 3px rgba(245, 158, 11, 0.5));
+}
+
+.gold-text {
+    background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+/* Table Cloth Color Switcher */
+.cloth-selector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(30, 41, 59, 0.7);
+    padding: 3px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cloth-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    color: #94a3b8;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cloth-btn:hover {
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.cloth-btn.active {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-blue {
+    background-color: #2563eb;
+    box-shadow: 0 0 6px #3b82f6;
+}
+
+.dot-red {
+    background-color: #dc2626;
+    box-shadow: 0 0 6px #ef4444;
+}
+
+.dot-green {
+    background-color: #10b981;
+    box-shadow: 0 0 6px #34d399;
+}
+
+/* Quick Control Tags */
+.hud-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding: 4px 10px;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+}
+
+.control-tag kbd {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f1f5f9;
+    background: rgba(51, 65, 85, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 1px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Game Area and Canvas */
+#gameArea {
+    position: relative;
+    box-shadow: 0 25px 65px -12px rgba(0, 0, 0, 0.95), 0 0 55px rgba(37, 99, 235, 0.22);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #000;
+}
+
+#screen {
     display: block;
-}*/
+    border-radius: 12px;
+}
+
+/* Subtle animation */
+@keyframes gentle-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@media (max-width: 990px) {
+    .hud-controls {
+        display: none;
+    }
+}
